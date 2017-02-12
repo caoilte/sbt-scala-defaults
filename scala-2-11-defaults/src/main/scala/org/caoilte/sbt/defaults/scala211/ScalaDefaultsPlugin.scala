@@ -1,7 +1,7 @@
-package org.caoilte
+package org.caoilte.sbt.defaults.scala211
 
-import sbt._
 import sbt.Keys._
+import sbt._
 
 object ScalaDefaultsPlugin extends AutoPlugin {
   override def requires = sbt.plugins.JvmPlugin

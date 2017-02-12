@@ -1,3 +1,5 @@
+package org.caoilte.sbt.defaults.scalafmt
+
 import fansi.Str
 import sbt.Keys._
 import sbt.{AutoPlugin, _}

@@ -1,4 +1,4 @@
-package org.caoilte
+package org.caoilte.sbt.defaults.sensible
 
 import sbt.AutoPlugin
 

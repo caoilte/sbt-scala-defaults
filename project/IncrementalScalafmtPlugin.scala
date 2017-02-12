@@ -1,4 +1,4 @@
-package org.caoilte.scalafmt
+package org.caoilte.sbt.defaults.scalafmt
 
 import org.scalafmt.bootstrap.ScalafmtBootstrap
 import sbt._
