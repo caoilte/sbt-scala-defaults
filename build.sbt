@@ -15,13 +15,24 @@ lazy val root = (project in file("."))
     Seq(publishArtifact := false)
   )
   .aggregate(
-    `build-utils`,
+    `universal-defaults`,
+    `scala-2-10-defaults`,
     `scala-2-11-defaults`,
+    `scala-2-12-defaults`,
     `scalafmt-defaults`,
-    `sensible-defaults`
+    `plugin-defaults`,
+    `project-defaults`
   )
 
-lazy val `build-utils` = project.settings(commonSettings: _*)
+lazy val `universal-defaults` =
+  project.settings(
+    commonSettings++
+      Seq(
+        filesToImport ++= Seq(
+          file("project/UniversalDefaultsPlugin.scala")
+        )
+      )
+  )
 
 lazy val `scala-2-10-defaults` =
   project.settings(
@@ -49,8 +60,19 @@ lazy val `scalafmt-defaults` = project
         )
       )
   )
-  .dependsOn(`build-utils`)
 
-lazy val `sensible-defaults` = project
+lazy val `plugin-defaults` = project
   .settings(commonSettings: _*)
-  .dependsOn(`scalafmt-defaults`, `scala-2-11-defaults`, `build-utils`)
+  .dependsOn(
+    `scalafmt-defaults`,
+    `scala-2-10-defaults`,
+    `universal-defaults`
+  )
+
+lazy val `project-defaults` = project
+  .settings(commonSettings: _*)
+  .dependsOn(
+    `scalafmt-defaults`,
+    `scala-2-12-defaults`,
+    `universal-defaults`
+  )

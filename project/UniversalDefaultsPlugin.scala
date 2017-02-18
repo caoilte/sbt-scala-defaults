@@ -4,7 +4,7 @@ import sbt._
 import sbt.Keys._
 import sbt.plugins.JvmPlugin
 
-object SensiblePluginAndLibrarySettingsPlugin extends AutoPlugin {
+object UniversalDefaultsPlugin extends AutoPlugin {
   override def requires = JvmPlugin
 
   override def trigger = allRequirements
