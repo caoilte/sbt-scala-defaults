@@ -8,12 +8,9 @@ object SensiblePluginDefaultsPlugin extends AutoPlugin {
 
   override def trigger = allRequirements
 
-  object autoImport {
-  }
+  object autoImport {}
 
   import autoImport._
 
-  override lazy val projectSettings = Seq(
-    sbtPlugin := true
-  )
+  override lazy val projectSettings = Seq(sbtPlugin := true)
 }

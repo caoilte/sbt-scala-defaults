@@ -1,3 +1,3 @@
-filesToImport := Seq(file("project/project/Library.scala"))
+filesToImport := Seq(file("project/project/Dependencies.scala"))
 
-common.Library.dependenciesAsSettings
+org.caoilte.sbt.Dependencies.allLibrariesAndAddPluginSettings

@@ -3,14 +3,14 @@ package org.caoilte.sbt.defaults
 import sbt._
 import sbt.Keys._
 import sbt.plugins.JvmPlugin
+import org.caoilte.sbt._
 
 object UniversalDefaultsPlugin extends AutoPlugin {
   override def requires = JvmPlugin
 
   override def trigger = allRequirements
 
-  object autoImport {
-  }
+  object autoImport {}
 
   import autoImport._
 
@@ -20,6 +20,6 @@ object UniversalDefaultsPlugin extends AutoPlugin {
       publishArtifact in (Test, packageBin) := false,
       publishArtifact in (Compile, packageDoc) := false,
       publishArtifact in (Compile, packageSrc) := true
-    )
+    ) ++ Dependencies.allAddPluginSettings
 
 }

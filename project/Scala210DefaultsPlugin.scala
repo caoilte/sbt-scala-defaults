@@ -2,9 +2,11 @@ package org.caoilte.sbt.defaults
 
 import sbt._
 import sbt.Keys._
+import com.typesafe.sbt.JavaVersionCheckPlugin
+import com.typesafe.sbt.JavaVersionCheckPlugin.autoImport._
 
 object Scala210DefaultsPlugin extends AutoPlugin {
-  override def requires = sbt.plugins.JvmPlugin
+  override def requires = JavaVersionCheckPlugin
 
   override def trigger = allRequirements
 
@@ -36,6 +38,7 @@ object Scala210DefaultsPlugin extends AutoPlugin {
       "-Yinline-warnings", // Emit inlining warnings. (Normally suppressed due to high volume)
       "-Yno-adapted-args" // Do not adapt an argument list (either by inserting () or creating a tuple) to match the receiver.
     ),
-    scalaVersion := "2.10.6"
+    scalaVersion := "2.10.6",
+    javaVersionPrefix in javaVersionCheck := Some("1.7")
   )
 }

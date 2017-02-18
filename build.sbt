@@ -1,3 +1,5 @@
+import org.caoilte.sbt._
+
 lazy val commonSettings = Seq(
   sbtPlugin := true,
   organization := "org.caoilte",
@@ -7,13 +9,11 @@ lazy val commonSettings = Seq(
       "https://gitlab.com/caoilte/sbt-scala-defaults/raw/master/LICENSE"
     )
   ),
-  filesToImport ++= Seq(file("project/project/Library.scala"))
+  filesToImport ++= Seq(file("project/project/Dependencies.scala"))
 )
 
 lazy val root = (project in file("."))
-  .settings(
-    Seq(publishArtifact := false)
-  )
+  .settings(Seq(publishArtifact := false))
   .aggregate(
     `universal-defaults`,
     `scala-2-10-defaults`,
@@ -26,33 +26,31 @@ lazy val root = (project in file("."))
 
 lazy val `universal-defaults` =
   project.settings(
-    commonSettings++
-      Seq(
-        filesToImport ++= Seq(
-          file("project/UniversalDefaultsPlugin.scala")
-        )
-      )
+    commonSettings ++
+      Seq(filesToImport ++= Seq(file("project/UniversalDefaultsPlugin.scala")))
   )
 
 lazy val `scala-2-10-defaults` =
-  project.settings(
-    commonSettings ++
-      Seq(
-        filesToImport ++= Seq(
-          file("project/Scala210DefaultssPlugin.scala")
-      )
+  project
+    .settings(
+      commonSettings ++
+        Seq(
+          filesToImport ++= Seq(file("project/Scala210DefaultsPlugin.scala"))
+        )
     )
-  )
-lazy val `scala-2-11-defaults` = project.settings(commonSettings: _*)
-lazy val `scala-2-12-defaults` = project.settings(commonSettings: _*)
+    .dependsOn(`universal-defaults`)
+lazy val `scala-2-11-defaults` =
+  project.settings(commonSettings: _*).dependsOn(`universal-defaults`)
+lazy val `scala-2-12-defaults` =
+  project.settings(commonSettings: _*).dependsOn(`universal-defaults`)
 
 lazy val `scalafmt-defaults` = project
   .settings(
     commonSettings ++
       Seq(
         libraryDependencies ++= Seq(
-          common.Library.scalafmtBootstrap,
-          common.Library.fansi
+          Libraries.scalafmtBootstrap,
+          Libraries.fansi
         ),
         filesToImport ++= Seq(
           file("project/SetupScalafmtPlugin.scala"),
@@ -63,16 +61,8 @@ lazy val `scalafmt-defaults` = project
 
 lazy val `plugin-defaults` = project
   .settings(commonSettings: _*)
-  .dependsOn(
-    `scalafmt-defaults`,
-    `scala-2-10-defaults`,
-    `universal-defaults`
-  )
+  .dependsOn(`scalafmt-defaults`, `scala-2-10-defaults`)
 
 lazy val `project-defaults` = project
   .settings(commonSettings: _*)
-  .dependsOn(
-    `scalafmt-defaults`,
-    `scala-2-12-defaults`,
-    `universal-defaults`
-  )
+  .dependsOn(`scalafmt-defaults`, `scala-2-12-defaults`)

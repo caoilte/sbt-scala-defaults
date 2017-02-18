@@ -1,10 +1,12 @@
 package org.caoilte.sbt.defaults
 
-import sbt.Keys._
 import sbt._
+import sbt.Keys._
+import com.typesafe.sbt.JavaVersionCheckPlugin
+import com.typesafe.sbt.JavaVersionCheckPlugin.autoImport._
 
 object Scala212DefaultsPlugin extends AutoPlugin {
-  override def requires = sbt.plugins.JvmPlugin
+  override def requires = JavaVersionCheckPlugin
 
   override def trigger = allRequirements
 
@@ -42,6 +44,7 @@ object Scala212DefaultsPlugin extends AutoPlugin {
       // See: https://github.com/scala/scala/blob/2.12.x/src/compiler/scala/tools/nsc/settings/ScalaSettings.scala#L93
       "-Yno-adapted-args" // Do not adapt an argument list (either by inserting () or creating a tuple) to match the receiver. (See: https://issues.scala-lang.org/browse/SI-2712)
     ),
-    scalaVersion := "2.12.1"
+    scalaVersion := "2.12.1",
+    javaVersionPrefix in javaVersionCheck := Some("1.8")
   )
 }
