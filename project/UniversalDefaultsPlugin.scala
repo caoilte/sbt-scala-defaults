@@ -19,7 +19,11 @@ object UniversalDefaultsPlugin extends AutoPlugin {
       publishArtifact in (Compile, packageBin) := true,
       publishArtifact in (Test, packageBin) := false,
       publishArtifact in (Compile, packageDoc) := false,
-      publishArtifact in (Compile, packageSrc) := true
-    ) ++ Dependencies.allAddPluginSettings
+      publishArtifact in (Compile, packageSrc) := true,
+      // See: https://github.com/lihaoyi/acyclic/blob/master/readme.md#how-to-use
+      scalacOptions += "-P:acyclic:force",
+      autoCompilerPlugins := true,
+      Dependencies.allLibrariesAsDependenciesSetting
+    ) ++ Dependencies.allCompilerPluginsAsSettings
 
 }

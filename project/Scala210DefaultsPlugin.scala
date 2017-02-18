@@ -39,6 +39,10 @@ object Scala210DefaultsPlugin extends AutoPlugin {
       "-Yno-adapted-args" // Do not adapt an argument list (either by inserting () or creating a tuple) to match the receiver.
     ),
     scalaVersion := "2.10.6",
-    javaVersionPrefix in javaVersionCheck := Some("1.7")
+    javaVersionPrefix in javaVersionCheck := Some("1.7"),
+    libraryDependencies ++= Seq(
+      // See: https://github.com/lihaoyi/acyclic/blob/master/readme.md#how-to-use
+      "org.scala-lang" % "scala-compiler" % scalaVersion.value % "provided"
+    )
   )
 }

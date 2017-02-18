@@ -27,6 +27,7 @@ lazy val root = (project in file("."))
 lazy val `universal-defaults` =
   project.settings(
     commonSettings ++
+      Dependencies.allSBTPluginsAsSettings ++
       Seq(filesToImport ++= Seq(file("project/UniversalDefaultsPlugin.scala")))
   )
 
