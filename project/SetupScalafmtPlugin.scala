@@ -1,4 +1,4 @@
-package org.caoilte.sbt.defaults.scalafmt
+package org.caoilte.sbt.defaults
 
 import fansi.Str
 import sbt.Keys._

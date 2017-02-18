@@ -1,9 +1,9 @@
-package org.caoilte.sbt.defaults.scala211
+package org.caoilte.sbt.defaults
 
 import sbt.Keys._
 import sbt._
 
-object ScalaDefaultsPlugin extends AutoPlugin {
+object Scala211SettingsPlugin extends AutoPlugin {
   override def requires = sbt.plugins.JvmPlugin
 
   override def trigger = allRequirements
