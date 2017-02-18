@@ -1,8 +1,8 @@
 package org.caoilte.sbt.defaults
 
 import fansi.Str
+import sbt._
 import sbt.Keys._
-import sbt.{AutoPlugin, _}
 import sbt.plugins.JvmPlugin
 import org.scalafmt.bootstrap.ScalafmtBootstrap
 import org.scalafmt.Versions

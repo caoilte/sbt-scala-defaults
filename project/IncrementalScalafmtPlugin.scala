@@ -24,7 +24,7 @@ object IncrementalScalafmtPlugin extends AutoPlugin {
 
   object autoImport {
     lazy val scalafmtInc =
-      taskKey[Unit]("Incrementally format modified sources")
+      taskKey[Set[File]]("Incrementally format modified sources")
   }
   import autoImport._
 
