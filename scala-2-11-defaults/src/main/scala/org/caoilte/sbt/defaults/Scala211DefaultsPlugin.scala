@@ -2,11 +2,9 @@ package org.caoilte.sbt.defaults
 
 import sbt.Keys._
 import sbt._
-import com.typesafe.sbt.JavaVersionCheckPlugin
-import com.typesafe.sbt.JavaVersionCheckPlugin.autoImport._
 
 object Scala211DefaultsPlugin extends AutoPlugin {
-  override def requires = JavaVersionCheckPlugin
+  override def requires = sbt.plugins.JvmPlugin
 
   override def trigger = allRequirements
 
@@ -47,7 +45,6 @@ object Scala211DefaultsPlugin extends AutoPlugin {
       // Available in Scala 2.11.9
 //      "-Yno-adapted-args" // Do not adapt an argument list (either by inserting () or creating a tuple) to match the receiver. (See: https://issues.scala-lang.org/browse/SI-2712)
     ),
-    scalaVersion := "2.11.8",
-    javaVersionPrefix in javaVersionCheck := Some("1.7")
+    scalaVersion := "2.11.8"
   )
 }

@@ -18,9 +18,11 @@ object Libraries {
 
 object SBTPlugins {
   val sbtImportScalaFiles = "org.caoilte" % "sbt-import-scala-files" % "1.0.0"
+
+  // Not included in all, as doesn't really work most of the time.
   val sbtJavaVersionCheck = "com.typesafe.sbt" % "sbt-javaversioncheck" % "0.1.0"
 
-  val all = Seq(sbtImportScalaFiles, sbtJavaVersionCheck)
+  val all = Seq(sbtImportScalaFiles)
 }
 
 object CompilerPlugins {
