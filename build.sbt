@@ -39,7 +39,7 @@ lazy val `scala-2-10-defaults` =
     commonSettings ++
       Seq(
         filesToImport ++= Seq(
-          file("project/Scala210SettingsPlugin.scala")
+          file("project/Scala210DefaultssPlugin.scala")
       )
     )
   )

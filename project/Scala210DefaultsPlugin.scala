@@ -3,7 +3,7 @@ package org.caoilte.sbt.defaults
 import sbt._
 import sbt.Keys._
 
-object Scala210SettingsPlugin extends AutoPlugin {
+object Scala210DefaultsPlugin extends AutoPlugin {
   override def requires = sbt.plugins.JvmPlugin
 
   override def trigger = allRequirements
