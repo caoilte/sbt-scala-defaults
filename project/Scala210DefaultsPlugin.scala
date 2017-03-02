@@ -17,13 +17,13 @@ object Scala210DefaultsPlugin extends AutoPlugin {
       "utf8", // Specify character encoding used by source files.
       "-feature", // Emit warning and location for usages of features that should be imported explicitly.
       "-target:jvm-1.7", // target JVM 1.8
-      "-unchecked", // Enable detailed unchecked (erasure) warnings
+      "-unchecked",      // Enable detailed unchecked (erasure) warnings
 
       // Advanced Options
       // See: https://github.com/scala/scala/blob/2.10.x/src/manual/scala/man1/scalac.scala#L182
       "-Xcheckinit", // Wrap field accessors to throw an exception on uninitialized access.
       "-Xfuture", // Turn on future language features.
-      "-Xlint", // Enable recommended additional warnings. (scalac -Xlint:help for details)
+      "-Xlint",   // Enable recommended additional warnings. (scalac -Xlint:help for details)
 
       // Non-lint warnings
       // See: https://github.com/scala/scala/blob/2.10.x/src/compiler/scala/tools/nsc/settings/Warnings.scala#L18

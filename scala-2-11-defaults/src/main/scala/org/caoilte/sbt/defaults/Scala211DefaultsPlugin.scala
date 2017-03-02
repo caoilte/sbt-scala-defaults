@@ -17,7 +17,7 @@ object Scala211DefaultsPlugin extends AutoPlugin {
       "utf8", // Specify character encoding used by source files.
       "-feature", // Emit warning and location for usages of features that should be imported explicitly.
       "-target:jvm-1.8", // target JVM 1.8
-      "-unchecked", // Enable detailed unchecked (erasure) warnings
+      "-unchecked",      // Enable detailed unchecked (erasure) warnings
 
       // Advanced Options
       // See: https://github.com/scala/scala/blob/2.11.x/src/manual/scala/man1/scalac.scala#L190
@@ -34,7 +34,7 @@ object Scala211DefaultsPlugin extends AutoPlugin {
       // Language Features
       // See: https://github.com/scala/scala/blob/2.11.x/src/compiler/scala/tools/nsc/settings/ScalaSettings.scala#L72
       "-language:postfixOps", // Allow postfix operator notation, such as `1 to 10 toList'
-      "-language:higherKinds", // Allow higher-kinded types
+      "-language:higherKinds",  // Allow higher-kinded types
       "-language:existentials", // Existential types (besides wildcard types) can be written and inferred
 
       // -Y "Private" settings

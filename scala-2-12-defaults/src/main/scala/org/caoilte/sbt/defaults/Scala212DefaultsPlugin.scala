@@ -19,7 +19,7 @@ object Scala212DefaultsPlugin extends AutoPlugin {
       "utf8", // Specify character encoding used by source files.
       "-feature", // Emit warning and location for usages of features that should be imported explicitly.
       "-target:jvm-1.8", // target JVM 1.8
-      "-unchecked", // Enable detailed unchecked (erasure) warnings
+      "-unchecked",      // Enable detailed unchecked (erasure) warnings
 
       // Advanced Options
       // See: https://github.com/scala/scala/blob/2.12.x/src/manual/scala/man1/scalac.scala#L187
@@ -31,13 +31,13 @@ object Scala212DefaultsPlugin extends AutoPlugin {
       // See: https://github.com/scala/scala/blob/2.12.x/src/compiler/scala/tools/nsc/settings/Warnings.scala#L18
       "-Ywarn-dead-code", // Warn when dead code is identified.
       "-Ywarn-value-discard", // Warn when non-Unit expression results are unused.
-      "-Ywarn-numeric-widen", // Warn when numerics are widened.
+      "-Ywarn-numeric-widen",  // Warn when numerics are widened.
       "-Ywarn-extra-implicit", // Warn when more than one implicit parameter section is defined.
 
       // Language Features
       // See: https://github.com/scala/scala/blob/2.12.x/src/compiler/scala/tools/nsc/settings/ScalaSettings.scala#L63
       "-language:postfixOps", // Allow postfix operator notation, such as `1 to 10 toList'
-      "-language:higherKinds", // Allow higher-kinded types
+      "-language:higherKinds",  // Allow higher-kinded types
       "-language:existentials", // Existential types (besides wildcard types) can be written and inferred
 
       // -Y "Private" settings

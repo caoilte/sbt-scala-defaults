@@ -10,9 +10,21 @@ Less boilerplate!
 
 # Ideas for the future
 
+https://github.com/softwaremill/scala-clippy
+https://engineering.sharethrough.com/blog/2015/09/23/capturing-common-config-with-an-sbt-parent-plugin/
+
+## incorporate sbt-catalyst
+
+https://github.com/typelevel/sbt-catalysts
+https://github.com/47deg/sbt-catalysts-extras
+
 ## Fix Cross Publishing Multi-Module builds with sbt-doge
 
 Fairly [simples][sbt-doge]
+
+## Open Source project defaults
+
+https://github.com/47deg/sbt-microsites
 
 ## Enable 2.12 New Optimizer on non-incremental builds
 
@@ -24,6 +36,8 @@ eg
 
 - https://github.com/sbt/sbt-duplicates-finder
 - sbt-updates
+https://github.com/47deg/sbt-dependencies
+https://github.com/scf37/sbt-overwatch
 
 ## Compare sbt-multi-jvm with sbt-cotest
 
@@ -44,4 +58,4 @@ If I must.
 [LICENCE]: https://github.com/caoilte/sbt-import-scala-files/blob/master/LICENCE "Licence"
 [212-new-optimizer]: http://scala-lang.org/news/2.12.0#new-optimizer "Scala 2.12 New Optimizer"
 [sbt-versioncheck]: https://github.com/sbt/sbt-javaversioncheck/ "sbt-javaversioncheck"
-[sbt-doge]: https://github.com/sbt/sbt-doge "sbt-doge"
+[sbt-doge]:   "sbt-doge"

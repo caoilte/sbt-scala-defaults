@@ -19,3 +19,6 @@ project/project/credentials.sbt
 .worksheet
 .idea
 .idea_modules/
+
+# This Plugin Specific
+.scalafmt
