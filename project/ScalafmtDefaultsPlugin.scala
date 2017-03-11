@@ -36,7 +36,7 @@ object ScalafmtDefaultsPlugin extends AutoPlugin {
         IO.write(
           file(".scalafmt.conf"),
           """style = defaultWithAlign
-            |maxColumn = 120
+            |maxColumn = 112
             |rewrite.rules = [RedundantParens, PreferCurlyFors, AvoidInfix, ExpandImportSelectors, RedundantBraces]
             |
             |align.openParenCallSite = false
@@ -63,7 +63,9 @@ object ScalafmtDefaultsPlugin extends AutoPlugin {
 
           sLog.value.info(
             logMessage(
-              (Str("Pre-commit hook that forbids unformatted files written to '") ++ Green(".git/hooks/pre-commit") ++ Str(
+              (Str("Pre-commit hook that forbids unformatted files written to '") ++ Green(
+                ".git/hooks/pre-commit"
+              ) ++ Str(
                 "'"
               )).render
             )
