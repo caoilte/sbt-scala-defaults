@@ -37,7 +37,7 @@ object ScalafmtDefaultsPlugin extends AutoPlugin {
           file(".scalafmt.conf"),
           """style = defaultWithAlign
             |maxColumn = 120
-            |rewrite.rules = [SortImports, RedundantParens, PreferCurlyFors]
+            |rewrite.rules = [RedundantParens, PreferCurlyFors, AvoidInfix, ExpandImportSelectors, RedundantBraces]
           """.stripMargin.getBytes("UTF-8")
         )
         sLog.value.info(configWrittenMessage)
