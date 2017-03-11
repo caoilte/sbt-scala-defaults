@@ -52,35 +52,35 @@ object ScalafmtDefaultsPlugin extends AutoPlugin {
           IO.write( // writes to file once when build is loaded
             PRE_COMMIT_FILE,
             s"""#!/usr/bin/env bash
-               |${SCALAFMT_HOME.getAbsolutePath}/scalafmt_ng --test
+               |${SCALAFMT_HOME.getAbsolutePath}/scalafmt_ng --version ${org.caoilte.sbt.V.scalafmt} --diff --test
             """.stripMargin.getBytes("UTF-8")
           )
           Files.setPosixFilePermissions(PRE_COMMIT_FILE.toPath, PosixFilePermissions.fromString("rwxr-xr-x"))
-
-          if (!NAILGUN_CHECK_DIR.exists()) {
-            IO.createDirectory(NAILGUN_CHECK_DIR)
-          }
-
-          val SCALAFMT_FILE = SCALAFMT_HOME / "scalafmt_ng"
-          IO.write( // writes to file once when build is loaded
-            SCALAFMT_FILE,
-            Source
-              .fromURL("https://raw.githubusercontent.com/olafurpg/scalafmt/master/bin/scalafmt_ng")
-              .mkString
-              .getBytes("UTF-8")
-          )
-          Files.setPosixFilePermissions(SCALAFMT_FILE.toPath, PosixFilePermissions.fromString("rwxr-xr-x"))
 
           sLog.value.info(
             logMessage((Str("Pre-commit hook that forbids unformatted files written to '") ++ Green(
               ".git/hooks/pre-commit") ++ Str("'")).render))
         }
+
+        if (!NAILGUN_CHECK_DIR.exists()) {
+          IO.createDirectory(NAILGUN_CHECK_DIR)
+        }
+
+        val SCALAFMT_FILE = SCALAFMT_HOME / "scalafmt_ng"
+        IO.write( // writes to file once when build is loaded
+          SCALAFMT_FILE,
+          Source
+            .fromURL("https://raw.githubusercontent.com/olafurpg/scalafmt/master/bin/scalafmt_ng")
+            .mkString
+            .getBytes("UTF-8")
+        )
+        Files.setPosixFilePermissions(SCALAFMT_FILE.toPath, PosixFilePermissions.fromString("rwxr-xr-x"))
+
       }
     )
 
-  def logMessage(message: String): String = {
+  def logMessage(message: String): String =
     (Cyan("scalafmt-defaults") ++ Str(": ")).render + message
-  }
 
   val configWrittenMessage: String = {
     logMessage(

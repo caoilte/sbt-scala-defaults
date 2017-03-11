@@ -4,11 +4,7 @@ import sbt._
 import sbt.Keys._
 
 object V {
-<<<<<<< HEAD
-  val scalafmt = "0.5.5"
-=======
-  val scalafmt = "0.5.7"
->>>>>>> 3bfb59a... increase scalafmt version
+  val scalafmt = "0.6.2"
   val acyclic  = "0.1.7"
 }
 
