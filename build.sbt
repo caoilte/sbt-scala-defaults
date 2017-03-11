@@ -50,7 +50,8 @@ lazy val `scala-2-12-defaults` =
       commonSettings ++
         Seq(
           addSbtPlugin(SBTPlugins.sbtJavaVersionCheck)
-        ))
+        )
+    )
     .dependsOn(`universal-defaults`)
 
 lazy val `scalafmt-defaults` = project

@@ -38,6 +38,10 @@ object ScalafmtDefaultsPlugin extends AutoPlugin {
           """style = defaultWithAlign
             |maxColumn = 120
             |rewrite.rules = [RedundantParens, PreferCurlyFors, AvoidInfix, ExpandImportSelectors, RedundantBraces]
+            |
+            |align.openParenCallSite = false
+            |danglingParentheses = true
+            |assumeStandardLibraryStripMargin = true
           """.stripMargin.getBytes("UTF-8")
         )
         sLog.value.info(configWrittenMessage)
@@ -58,8 +62,12 @@ object ScalafmtDefaultsPlugin extends AutoPlugin {
           Files.setPosixFilePermissions(PRE_COMMIT_FILE.toPath, PosixFilePermissions.fromString("rwxr-xr-x"))
 
           sLog.value.info(
-            logMessage((Str("Pre-commit hook that forbids unformatted files written to '") ++ Green(
-              ".git/hooks/pre-commit") ++ Str("'")).render))
+            logMessage(
+              (Str("Pre-commit hook that forbids unformatted files written to '") ++ Green(".git/hooks/pre-commit") ++ Str(
+                "'"
+              )).render
+            )
+          )
         }
 
         if (!NAILGUN_CHECK_DIR.exists()) {
@@ -86,7 +94,8 @@ object ScalafmtDefaultsPlugin extends AutoPlugin {
     logMessage(
       (Str("config file written to '") ++ Green(
         ".scalafmt.conf"
-      ) ++ White("'")).render)
+      ) ++ White("'")).render
+    )
   }
 
 }
