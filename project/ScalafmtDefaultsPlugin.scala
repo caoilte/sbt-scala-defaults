@@ -83,7 +83,6 @@ object ScalafmtDefaultsPlugin extends AutoPlugin {
             .getBytes("UTF-8")
         )
         Files.setPosixFilePermissions(SCALAFMT_FILE.toPath, PosixFilePermissions.fromString("rwxr-xr-x"))
-
       }
     )
 

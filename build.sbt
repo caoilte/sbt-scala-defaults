@@ -28,7 +28,8 @@ lazy val `universal-defaults` =
   project.settings(
     commonSettings ++
       Seq(
-        addSbtPlugin(SBTPlugins.sbtImportScalaFiles)
+        addSbtPlugin(SBTPlugins.sbtImportScalaFiles),
+        addSbtPlugin(SBTPlugins.coursier)
       ) ++
       Seq(filesToImport ++= Seq(file("project/UniversalDefaultsPlugin.scala")))
   )
@@ -42,8 +43,10 @@ lazy val `scala-2-10-defaults` =
         )
     )
     .dependsOn(`universal-defaults`)
+
 lazy val `scala-2-11-defaults` =
   project.settings(commonSettings: _*).dependsOn(`universal-defaults`)
+
 lazy val `scala-2-12-defaults` =
   project
     .settings(
