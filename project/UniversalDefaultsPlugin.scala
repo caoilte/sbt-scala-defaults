@@ -24,7 +24,8 @@ object UniversalDefaultsPlugin extends AutoPlugin {
       scalacOptions += "-P:acyclic:force",
       autoCompilerPlugins := true,
       com.softwaremill.clippy.ClippySbtPlugin.clippyColorsEnabled := true,
-      Dependencies.allLibrariesAsDependenciesSetting
+      Dependencies.allLibrariesAsDependenciesSetting,
+      publishArtifact in Test := false
     ) ++ Dependencies.allCompilerPluginsAsSettings
 
 }
