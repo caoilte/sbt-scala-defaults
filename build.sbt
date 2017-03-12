@@ -4,11 +4,6 @@ lazy val commonSettings = Seq(
   sbtPlugin := true,
   organization := "org.caoilte",
   description := "SBT Plugin to provide sensible defaults for a Scala project",
-  licenses := Seq(
-    "Apache 2.0 License" -> url(
-      "https://gitlab.com/caoilte/sbt-scala-defaults/raw/master/LICENSE"
-    )
-  ),
   filesToImport ++= Seq(file("project/project/Dependencies.scala")),
   pomExtra in Global := {
     <url>https://github.com/caoilte/sbt-scala-defaults/</url>
