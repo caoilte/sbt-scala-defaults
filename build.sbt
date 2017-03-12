@@ -4,28 +4,7 @@ lazy val commonSettings = Seq(
   sbtPlugin := true,
   organization := "org.caoilte",
   description := "SBT Plugin to provide sensible defaults for a Scala project",
-  filesToImport ++= Seq(file("project/project/Dependencies.scala")),
-  pomExtra in Global := {
-    <url>https://github.com/caoilte/sbt-scala-defaults/</url>
-      <licenses>
-        <license>
-          <name>Apache 2</name>
-          <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-        </license>
-      </licenses>
-      <scm>
-        <connection>scm:git:github.com/caoilte/sbt-scala-defaults.git</connection>
-        <developerConnection>scm:git:git@github.com:caoilte/sbt-scala-defaults.git</developerConnection>
-        <url>github.com/caoilte/sbt-scala-defaults/</url>
-      </scm>
-      <developers>
-        <developer>
-          <id>caoilte</id>
-          <name>Caoilte O'Connor</name>
-          <url>http://caoilte.org</url>
-        </developer>
-      </developers>
-  }
+  filesToImport ++= Seq(file("project/project/Dependencies.scala"))
 )
 
 lazy val root = (project in file("."))
@@ -102,3 +81,25 @@ lazy val `plugin-defaults` = project
 lazy val `project-defaults` = project
   .settings(commonSettings: _*)
   .dependsOn(`scalafmt-defaults`, `scala-2-12-defaults`)
+
+pomExtra in Global := {
+  <url>https://github.com/caoilte/sbt-scala-defaults/</url>
+    <licenses>
+      <license>
+        <name>Apache 2</name>
+        <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      </license>
+    </licenses>
+    <scm>
+      <connection>scm:git:github.com/caoilte/sbt-scala-defaults.git</connection>
+      <developerConnection>scm:git:git@github.com:caoilte/sbt-scala-defaults.git</developerConnection>
+      <url>github.com/caoilte/sbt-scala-defaults/</url>
+    </scm>
+    <developers>
+      <developer>
+        <id>caoilte</id>
+        <name>Caoilte O'Connor</name>
+        <url>http://caoilte.org</url>
+      </developer>
+    </developers>
+}
