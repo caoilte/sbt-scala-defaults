@@ -23,6 +23,7 @@ object UniversalDefaultsPlugin extends AutoPlugin {
       // See: https://github.com/lihaoyi/acyclic/blob/master/readme.md#how-to-use
       scalacOptions += "-P:acyclic:force",
       autoCompilerPlugins := true,
+      com.softwaremill.clippy.ClippySbtPlugin.clippyColorsEnabled := true,
       Dependencies.allLibrariesAsDependenciesSetting
     ) ++ Dependencies.allCompilerPluginsAsSettings
 

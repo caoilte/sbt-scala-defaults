@@ -11,7 +11,7 @@ object Scala212DefaultsPlugin extends AutoPlugin {
   override def trigger = allRequirements
 
   override lazy val buildSettings = Seq(
-    scalacOptions := Seq(
+    scalacOptions ++= Seq(
       // Standard Options
       // See: https://github.com/scala/scala/blob/2.12.x/src/manual/scala/man1/scalac.scala#L53
       "-deprecation", // Emit warning and location for usages of deprecated APIs.

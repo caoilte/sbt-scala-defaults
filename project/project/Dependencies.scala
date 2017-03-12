@@ -16,14 +16,15 @@ object Libraries {
 }
 
 object SBTPlugins {
-  val sbtImportScalaFiles = "org.caoilte"     % "sbt-import-scala-files" % "1.0.0"
-  val sbtScalafmt         = "com.geirsson"    % "sbt-scalafmt"           % V.scalafmt
-  val coursier            = "io.get-coursier" % "sbt-coursier"           % "1.0.0-M15"
+  val sbtImportScalaFiles = "org.caoilte"             % "sbt-import-scala-files" % "1.0.0"
+  val sbtScalafmt         = "com.geirsson"            % "sbt-scalafmt"           % V.scalafmt
+  val coursier            = "io.get-coursier"         % "sbt-coursier"           % "1.0.0-M15"
+  val clippy              = "com.softwaremill.clippy" % "plugin-sbt"             % "0.5.2"
 
   // Not included in all, as doesn't really work most of the time.
   val sbtJavaVersionCheck = "com.typesafe.sbt" % "sbt-javaversioncheck" % "0.1.0"
 
-  val all = Seq(sbtImportScalaFiles, sbtScalafmt, coursier)
+  val all = Seq(sbtImportScalaFiles, sbtScalafmt, coursier, clippy)
 }
 
 object CompilerPlugins {

@@ -13,7 +13,12 @@ lazy val commonSettings = Seq(
 )
 
 lazy val root = (project in file("."))
-  .settings(Seq(publishArtifact := false))
+  .settings(
+    Seq(
+      publishArtifact := false,
+      name := "sbt-scala-defaults"
+    )
+  )
   .aggregate(
     `universal-defaults`,
     `scala-2-10-defaults`,
@@ -29,9 +34,11 @@ lazy val `universal-defaults` =
     commonSettings ++
       Seq(
         addSbtPlugin(SBTPlugins.sbtImportScalaFiles),
-        addSbtPlugin(SBTPlugins.coursier)
-      ) ++
-      Seq(filesToImport ++= Seq(file("project/UniversalDefaultsPlugin.scala")))
+        addSbtPlugin(SBTPlugins.coursier),
+        addSbtPlugin(SBTPlugins.clippy),
+        clippyColorsEnabled := true,
+        filesToImport ++= Seq(file("project/UniversalDefaultsPlugin.scala"))
+      )
   )
 
 lazy val `scala-2-10-defaults` =
