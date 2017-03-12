@@ -9,7 +9,28 @@ lazy val commonSettings = Seq(
       "https://gitlab.com/caoilte/sbt-scala-defaults/raw/master/LICENSE"
     )
   ),
-  filesToImport ++= Seq(file("project/project/Dependencies.scala"))
+  filesToImport ++= Seq(file("project/project/Dependencies.scala")),
+  pomExtra in Global := {
+    <url>https://github.com/caoilte/sbt-scala-defaults/</url>
+      <licenses>
+        <license>
+          <name>Apache 2</name>
+          <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+      </licenses>
+      <scm>
+        <connection>scm:git:github.com/caoilte/sbt-scala-defaults.git</connection>
+        <developerConnection>scm:git:git@github.com:caoilte/sbt-scala-defaults.git</developerConnection>
+        <url>github.com/caoilte/sbt-scala-defaults/</url>
+      </scm>
+      <developers>
+        <developer>
+          <id>caoilte</id>
+          <name>Caoilte O'Connor</name>
+          <url>http://caoilte.org</url>
+        </developer>
+      </developers>
+  }
 )
 
 lazy val root = (project in file("."))

@@ -24,7 +24,12 @@ object SBTPlugins {
   // Not included in all, as doesn't really work most of the time.
   val sbtJavaVersionCheck = "com.typesafe.sbt" % "sbt-javaversioncheck" % "0.1.0"
 
-  val all = Seq(sbtImportScalaFiles, sbtScalafmt, coursier, clippy)
+  // Only needed for opensource plugins
+  val sonatype              = "org.xerial.sbt" % "sbt-sonatype" % "1.1"
+  val pgp                   = "com.jsuereth" % "sbt-pgp" % "1.0.0"
+  val forOpensourceProjects = Seq(sonatype, pgp)
+
+  val base = Seq(sbtImportScalaFiles, sbtScalafmt, coursier, clippy)
 }
 
 object CompilerPlugins {
@@ -35,9 +40,9 @@ object CompilerPlugins {
 
 object Dependencies {
   val allLibrariesAsDependenciesSetting = libraryDependencies ++= Libraries.all
-  val allSBTPluginsAsSettings           = SBTPlugins.all.map(addSbtPlugin)
+  val baseSBTPluginsAsSettings          = SBTPlugins.base.map(addSbtPlugin)
   val allCompilerPluginsAsSettings      = CompilerPlugins.all.map(addCompilerPlugin)
 
-  val allLibrariesAndPluginsAsSettings: Seq[Setting[_]] =
-    Seq(allLibrariesAsDependenciesSetting) ++ allSBTPluginsAsSettings ++ allCompilerPluginsAsSettings
+  val baseLibrariesAndPluginsAsSettings: Seq[Setting[_]] =
+    Seq(allLibrariesAsDependenciesSetting) ++ baseSBTPluginsAsSettings ++ allCompilerPluginsAsSettings
 }
