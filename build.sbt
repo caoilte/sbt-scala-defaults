@@ -37,6 +37,7 @@ lazy val root = (project in file("."))
   .settings(
     Seq(
       publishArtifact := false,
+      organization := "org.caoilte",
       name := "sbt-scala-defaults"
     )
   )
