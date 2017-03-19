@@ -20,6 +20,7 @@ object SBTPlugins {
   val sbtScalafmt         = "com.geirsson"            % "sbt-scalafmt"           % V.scalafmt
   val coursier            = "io.get-coursier"         % "sbt-coursier"           % "1.0.0-M15"
   val clippy              = "com.softwaremill.clippy" % "plugin-sbt"             % "0.5.2"
+  val sbtRelease          = "com.github.gseitz"       % "sbt-release"            % "1.0.4"
 
   // Not included in all, as doesn't really work most of the time.
   val sbtJavaVersionCheck = "com.typesafe.sbt" % "sbt-javaversioncheck" % "0.1.0"
@@ -27,7 +28,7 @@ object SBTPlugins {
   // Only needed for opensource plugins
   val sonatype              = "org.xerial.sbt" % "sbt-sonatype" % "1.1"
   val pgp                   = "com.jsuereth" % "sbt-pgp" % "1.0.0"
-  val forOpensourceProjects = Seq(sonatype, pgp)
+  val forOpensourceProjects = Seq(sonatype, pgp, sbtRelease)
 
   val base = Seq(sbtImportScalaFiles, sbtScalafmt, coursier, clippy)
 }
