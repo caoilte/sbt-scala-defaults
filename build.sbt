@@ -5,7 +5,8 @@ lazy val commonSettings = Seq(
   organization := "org.caoilte",
   description := "SBT Plugin to provide sensible defaults for a Scala project",
   filesToImport ++= Seq(file("project/project/Dependencies.scala")),
-  publishArtifact in (Compile, packageDoc) := true
+  publishArtifact in (Compile, packageDoc) := true,
+  scalaVersion := "2.10.6"
 )
 
 lazy val root = (project in file("."))
@@ -18,9 +19,7 @@ lazy val root = (project in file("."))
   )
   .aggregate(
     `universal-defaults`,
-    `scala-2-10-defaults`,
-    `scala-2-11-defaults`,
-    `scala-2-12-defaults`,
+    `scalac-defaults`,
     `scalafmt-defaults`,
     `plugin-defaults`,
     `project-defaults`
@@ -38,25 +37,12 @@ lazy val `universal-defaults` =
       )
   )
 
-lazy val `scala-2-10-defaults` =
+lazy val `scalac-defaults` =
   project
     .settings(
       commonSettings ++
         Seq(
-          filesToImport ++= Seq(file("project/Scala210DefaultsPlugin.scala"))
-        )
-    )
-    .dependsOn(`universal-defaults`)
-
-lazy val `scala-2-11-defaults` =
-  project.settings(commonSettings: _*).dependsOn(`universal-defaults`)
-
-lazy val `scala-2-12-defaults` =
-  project
-    .settings(
-      commonSettings ++
-        Seq(
-          addSbtPlugin(SBTPlugins.sbtJavaVersionCheck)
+          filesToImport ++= Seq(file("project/ScalacDefaultsPlugin.scala"))
         )
     )
     .dependsOn(`universal-defaults`)
@@ -77,11 +63,11 @@ lazy val `scalafmt-defaults` = project
 
 lazy val `plugin-defaults` = project
   .settings(commonSettings: _*)
-  .dependsOn(`scalafmt-defaults`, `scala-2-10-defaults`)
+  .dependsOn(`scalafmt-defaults`, `scalac-defaults`)
 
 lazy val `project-defaults` = project
   .settings(commonSettings: _*)
-  .dependsOn(`scalafmt-defaults`, `scala-2-12-defaults`)
+  .dependsOn(`scalafmt-defaults`, `scalac-defaults`)
 
 pomExtra in Global := {
   <url>https://github.com/caoilte/sbt-scala-defaults/</url>

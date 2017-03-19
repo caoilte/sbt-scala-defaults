@@ -12,6 +12,7 @@ Less boilerplate!
 
 https://github.com/softwaremill/scala-clippy
 https://engineering.sharethrough.com/blog/2015/09/23/capturing-common-config-with-an-sbt-parent-plugin/
+https://github.com/sbt/sbt-git
 
 ## incorporate sbt-catalyst
 
