@@ -4,7 +4,7 @@ import sbt._
 import sbt.Keys._
 
 object V {
-  val scalafmt = "0.6.2"
+  val scalafmt = "0.6.8"
   val acyclic  = "0.1.7"
 }
 
@@ -18,7 +18,7 @@ object Libraries {
 object SBTPlugins {
   val sbtImportScalaFiles = "org.caoilte"             % "sbt-import-scala-files" % "1.0.0"
   val sbtScalafmt         = "com.geirsson"            % "sbt-scalafmt"           % V.scalafmt
-  val coursier            = "io.get-coursier"         % "sbt-coursier"           % "1.0.0-M15"
+  val coursier            = "io.get-coursier"         % "sbt-coursier"           % "1.0.0-M15-5"
   val clippy              = "com.softwaremill.clippy" % "plugin-sbt"             % "0.5.2"
   val sbtRelease          = "com.github.gseitz"       % "sbt-release"            % "1.0.4"
 

@@ -21,7 +21,6 @@ lazy val root = (project in file("."))
     `universal-defaults`,
     `scalac-defaults`,
     `scalafmt-defaults`,
-    `plugin-defaults`,
     `project-defaults`
   )
 
@@ -60,10 +59,6 @@ lazy val `scalafmt-defaults` = project
         addSbtPlugin(SBTPlugins.sbtScalafmt)
       )
   )
-
-lazy val `plugin-defaults` = project
-  .settings(commonSettings: _*)
-  .dependsOn(`scalafmt-defaults`, `scalac-defaults`)
 
 lazy val `project-defaults` = project
   .settings(commonSettings: _*)
