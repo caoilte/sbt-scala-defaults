@@ -1,5 +1,6 @@
 package org.caoilte.sbt.defaults
 
+import java.net.UnknownHostException
 import java.nio.file.Files
 import java.nio.file.attribute.PosixFilePermissions
 
@@ -9,6 +10,9 @@ import sbt.Keys._
 import fansi.Color._
 
 import scala.io.Source
+import scala.util.Failure
+import scala.util.Success
+import scala.util.Try
 
 object ScalafmtDefaultsPlugin extends AutoPlugin {
   override def requires = org.scalafmt.sbt.ScalafmtPlugin
@@ -76,17 +80,35 @@ object ScalafmtDefaultsPlugin extends AutoPlugin {
           IO.createDirectory(NAILGUN_CHECK_DIR)
         }
 
-        val SCALAFMT_FILE = SCALAFMT_HOME / "scalafmt_ng"
-        IO.write( // writes to file once when build is loaded
-          SCALAFMT_FILE,
-          Source
-            .fromURL("https://raw.githubusercontent.com/olafurpg/scalafmt/master/bin/scalafmt_ng")
-            .mkString
-            .getBytes("UTF-8")
-        )
-        Files.setPosixFilePermissions(SCALAFMT_FILE.toPath, PosixFilePermissions.fromString("rwxr-xr-x"))
+        val _ = tryAndDownloadScalafmtNg(SCALAFMT_HOME / "scalafmt_ng").left.foreach { message =>
+          sLog.value.warn(message)
+        }
       }
     )
+
+  val REMOTE_SCALAFMT_NG = "https://raw.githubusercontent.com/olafurpg/scalafmt/master/bin/scalafmt_ng"
+  def tryAndDownloadScalafmtNg(fileLocation: File): Either[String, Unit] =
+    Try {
+      IO.write( // writes to file once when build is loaded
+        fileLocation,
+        Source
+          .fromURL(REMOTE_SCALAFMT_NG)
+          .mkString
+          .getBytes("UTF-8")
+      )
+      Files.setPosixFilePermissions(fileLocation.toPath, PosixFilePermissions.fromString("rwxr-xr-x"))
+    } match {
+      case Success(p) => Right(())
+      case Failure(e) =>
+        e match {
+          case u: UnknownHostException =>
+            Left(
+              (Yellow("Failed to connect to '") ++ Str(REMOTE_SCALAFMT_NG)
+                ++ Yellow("' in order to create/update local copy")).render
+            )
+          case other => throw other
+        }
+    }
 
   def logMessage(message: String): String =
     (Cyan("scalafmt-defaults") ++ Str(": ")).render + message
