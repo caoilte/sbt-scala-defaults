@@ -5,7 +5,6 @@ lazy val commonSettings = Seq(
   organization := "org.caoilte",
   description := "SBT Plugin to provide sensible defaults for a Scala project",
   filesToImport ++= Seq(file("project/project/Dependencies.scala")),
-  publishArtifact in (Compile, packageDoc) := true,
   scalaVersion := "2.10.6"
 )
 

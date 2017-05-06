@@ -10,6 +10,8 @@ Less boilerplate!
 
 # Ideas for the future
 
+https://github.com/sbt/sbt-assembly/issues/236#issuecomment-294452474
+
 https://github.com/softwaremill/scala-clippy
 https://engineering.sharethrough.com/blog/2015/09/23/capturing-common-config-with-an-sbt-parent-plugin/
 https://github.com/sbt/sbt-git

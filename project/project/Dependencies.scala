@@ -18,8 +18,8 @@ object Libraries {
 object SBTPlugins {
   val sbtImportScalaFiles = "org.caoilte"             % "sbt-import-scala-files" % "1.0.0"
   val sbtScalafmt         = "com.geirsson"            % "sbt-scalafmt"           % V.scalafmt
-  val coursier            = "io.get-coursier"         % "sbt-coursier"           % "1.0.0-M15-5"
-  val clippy              = "com.softwaremill.clippy" % "plugin-sbt"             % "0.5.2"
+  val coursier            = "io.get-coursier"         % "sbt-coursier"           % "1.0.0-RC2"
+  val clippy              = "com.softwaremill.clippy" % "plugin-sbt"             % "0.5.3"
   val sbtRelease          = "com.github.gseitz"       % "sbt-release"            % "1.0.4"
 
   // Not included in all, as doesn't really work most of the time.
